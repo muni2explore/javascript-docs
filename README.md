@@ -181,6 +181,36 @@ Object.defineProperty(muniAyothi, "fullName", {
 
 console.log(muniAyothi.fullName);
 </pre>
-Note: Script snippet #1:21 Uncaught TypeError: Cannot redefine property: fullName
+<blockquote> 
+  Note: Script snippet #1:21 Uncaught TypeError: Cannot redefine property: fullName
     at Function.defineProperty (<anonymous>)
-    at <anonymous>:21:8
+    at <anonymous>:21:8 
+  </blockquote> 
+
+<h3>  enumerable: true enable as view Object properties via Object.keys or for..in loop </h3>
+
+<pre>
+var createPerson = function(firstName, lastName) {
+  var person = {};
+  Object.defineProperties(person, {
+    firstName: {
+      value: firstName,
+      enumerable: true
+    },
+    lastName: {
+      value: lastName,
+      enumerable: true
+    },
+    fullName: {
+      get: function() {
+        return this.firstName+" "+this.lastName;
+      },
+      enumerable: true // default false
+    }
+    
+  });
+  return person;
+}
+var muniAyothi = createPerson("muni", "ayothi");
+Object.keys(muniAyothi); //['firstName', 'lastName', 'fullName']
+</pre>
