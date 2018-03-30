@@ -72,7 +72,7 @@ obj.prepareRequest();
 
 # Data and Accessor Properties
 
-1. Data Descriptor
+1. Data Descriptor (value)
 2. Accessor Descriptor (get & set)
 
 <pre>
@@ -115,5 +115,38 @@ var apple = fruitObj("Apple");
 console.log(apple.name); //Apple
 apple.name = "Orange";
 console.log(apple.name); //Orange
+</pre>
+
+#  Example : Object.defineProperties
+
+<pre>
+var createPerson = function(firstName, lastName) {
+  var person = {};
+  Object.defineProperties(person, {
+    firstName: {
+      value: firstName,
+      writable: true
+    },
+    lastName: {
+      value: lastName,
+      writable: true
+    },
+    fullName: {
+      get: function() {
+        return this.firstName+" "+this.lastName;
+      },
+      set: function(val) {
+        this.firstName = val;
+        this.lastName = val;
+      }
+    }
+    
+  });
+  return person;
+}
+var muniAyothi = createPerson("muni", "ayothi");
+console.log( muniAyothi.fullName ) // 'muni ayothi'
+muniAyothi.fullName = 'sasi'
+console.log( muniAyothi.fullName )// 'sasi sasi'
 </pre>
 
