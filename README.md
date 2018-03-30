@@ -1,5 +1,42 @@
 # javascript-docs
 
+# Types of Object creation by a function in JavaScript
+
+1. Factory function
+
+<pre>
+var createObj = function(name) {
+  return {
+    name: name,
+    sayHello: function() {
+      console.log("Hello "+this.name);
+    }
+  }
+}
+
+var muni = createObj("muni");
+console.log(muni.sayHello()); // Hello muni
+var sasi = createObj("sasi");
+console.log(sasi.sayHello()); // Hello Sasi
+
+</pre>
+
+2. Constructor function
+
+<pre>
+var CreateObj = function(name) {
+  this.name = name;
+  this.sayHello = function() {
+    console.log("Hello "+this.name);
+  }
+}
+var muni = new CreateObj("muni");
+console.log(muni.sayHello()); // Hello muni
+var sasi = new CreateObj("sasi");
+console.log(sasi.sayHello()); // Hello Sasi
+</pre>
+
+
 # bind example
 
 <pre>
