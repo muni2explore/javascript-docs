@@ -1,4 +1,12 @@
-# javascript-docs
+# JavaScript Docs
+
+# Object Literal
+
+<pre>
+var obj = {}; 
+//which is equivalent to this
+var obj = new Object();
+</pre>
 
 # Types of Object creation by a function in JavaScript
 
