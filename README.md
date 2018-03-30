@@ -69,3 +69,51 @@ var obj = {
 
 obj.prepareRequest();
 </pre>
+
+# Data and Accessor Properties
+
+1. Data Descriptor
+2. Accessor Descriptor (get & set)
+
+<pre>
+var obj = new Object();
+Object.defineProperty(objectName, "propertyName", {
+  value: "somevalue" //Object descriptor object either Data/Accessor Object
+  writable: true //default false
+})
+</pre>
+
+Example
+
+<pre>
+var fruitObj = function(name) {
+  var fruit = {};
+  Object.defineProperty(fruit, "name", {
+   value: name, 
+   writable: false 
+  });
+  return fruit;
+};
+var apple = fruitObj("Apple");
+console.log(apple.name); //Apple
+apple.name = "Orange";
+console.log(apple.name); //Apple
+</pre>
+
+Example : Writable True
+
+<pre>
+var fruitObj = function(name) {
+  var fruit = {};
+  Object.defineProperty(fruit, "name", {
+   value: name, 
+   writable: true 
+  });
+  return fruit;
+};
+var apple = fruitObj("Apple");
+console.log(apple.name); //Apple
+apple.name = "Orange";
+console.log(apple.name); //Orange
+</pre>
+
