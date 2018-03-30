@@ -150,3 +150,37 @@ muniAyothi.fullName = 'sasi'
 console.log( muniAyothi.fullName )// 'sasi sasi'
 </pre>
 
+configurable:true property which enable to redefine the particular property
+
+<pre>
+var createPerson = function(firstName, lastName) {
+  var person = {};
+  Object.defineProperties(person, {
+    firstName: {
+      value: firstName
+    },
+    lastName: {
+      value: lastName
+    },
+    fullName: {
+      get: function() {
+        return this.firstName+" "+this.lastName;
+      },
+      configurable: false // default false
+    }
+    
+  });
+  return person;
+}
+var muniAyothi = createPerson("muni", "ayothi");
+Object.defineProperty(muniAyothi, "fullName", {
+  get: function() {
+  return this.lastName +" "+this.firstName;
+  }
+} );
+
+console.log(muniAyothi.fullName);
+</pre>
+Note: Script snippet #1:21 Uncaught TypeError: Cannot redefine property: fullName
+    at Function.defineProperty (<anonymous>)
+    at <anonymous>:21:8
