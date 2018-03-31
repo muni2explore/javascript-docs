@@ -2,17 +2,17 @@
 
 # Object Literal
 
-<pre>
+```javascript
 var obj = {}; 
 //which is equivalent to this
 var obj = new Object();
-</pre>
+```
 
 # Types of Object creation by a function in JavaScript
 
 1. Factory function
 
-<pre>
+```javascript
 var createObj = function(name) {
   return {
     name: name,
@@ -27,11 +27,11 @@ console.log(muni.sayHello()); // Hello muni
 var sasi = createObj("sasi");
 console.log(sasi.sayHello()); // Hello Sasi
 
-</pre>
+```
 
 2. Constructor function
 
-<pre>
+```javascript
 var CreateObj = function(name) {
   this.name = name;
   this.sayHello = function() {
@@ -42,12 +42,12 @@ var muni = new CreateObj("muni");
 console.log(muni.sayHello()); // Hello muni
 var sasi = new CreateObj("sasi");
 console.log(sasi.sayHello()); // Hello Sasi
-</pre>
+```
 
 
 # bind example
 
-<pre>
+```javascript
 var makeReuest = function(url,cb){
   var data = 30;
   
@@ -68,24 +68,24 @@ var obj = {
 };
 
 obj.prepareRequest();
-</pre>
+```
 
 # Data and Accessor Properties
 
 1. Data Descriptor (value)
 2. Accessor Descriptor (get & set)
 
-<pre>
+```javascript
 var obj = new Object();
 Object.defineProperty(objectName, "propertyName", {
   value: "somevalue" //Object descriptor object either Data/Accessor Object
   writable: true //default false
 })
-</pre>
+```
 
 Example
 
-<pre>
+```javascript
 var fruitObj = function(name) {
   var fruit = {};
   Object.defineProperty(fruit, "name", {
@@ -98,11 +98,11 @@ var apple = fruitObj("Apple");
 console.log(apple.name); //Apple
 apple.name = "Orange";
 console.log(apple.name); //Apple
-</pre>
+```
 
 Example : Writable True
 
-<pre>
+```javascript
 var fruitObj = function(name) {
   var fruit = {};
   Object.defineProperty(fruit, "name", {
@@ -115,11 +115,11 @@ var apple = fruitObj("Apple");
 console.log(apple.name); //Apple
 apple.name = "Orange";
 console.log(apple.name); //Orange
-</pre>
+```
 
 #  Example : Object.defineProperties
 
-<pre>
+```javascript
 var createPerson = function(firstName, lastName) {
   var person = {};
   Object.defineProperties(person, {
@@ -148,11 +148,11 @@ var muniAyothi = createPerson("muni", "ayothi");
 console.log( muniAyothi.fullName ) // 'muni ayothi'
 muniAyothi.fullName = 'sasi'
 console.log( muniAyothi.fullName )// 'sasi sasi'
-</pre>
+```
 
 configurable:true property which enable to redefine the particular property
 
-<pre>
+```javascript
 var createPerson = function(firstName, lastName) {
   var person = {};
   Object.defineProperties(person, {
@@ -180,7 +180,7 @@ Object.defineProperty(muniAyothi, "fullName", {
 } );
 
 console.log(muniAyothi.fullName);
-</pre>
+```
 <blockquote> 
   Note: Script snippet #1:21 Uncaught TypeError: Cannot redefine property: fullName
     at Function.defineProperty (<anonymous>)
@@ -189,7 +189,7 @@ console.log(muniAyothi.fullName);
 
 <h3>  enumerable: true enable as view Object properties via Object.keys or for..in loop </h3>
 
-<pre>
+```javascript
 var createPerson = function(firstName, lastName) {
   var person = {};
   Object.defineProperties(person, {
@@ -213,7 +213,7 @@ var createPerson = function(firstName, lastName) {
 }
 var muniAyothi = createPerson("muni", "ayothi");
 Object.keys(muniAyothi); //['firstName', 'lastName', 'fullName']
-</pre>
+```
 
 # Parasitic Inheritance in JavaScript
 
