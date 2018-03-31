@@ -262,3 +262,58 @@ emp1.firstName = "Sasi";
 console.log(emp1.fullName); //Sasi Ayothi, Senior Webdeveloper
 
 ```
+#### Example -2
+```javascript
+var createPerson = function(firstName, lastName) {
+  var person = {
+    firstName: firstName,
+    lastName: lastName,
+    sayHello: function(){
+      return "Hi there.."
+    }
+  };
+  Object.defineProperty(person, "fullName", {
+    get: function() {
+      return this.firstName+" "+this.lastName;
+    },
+    enumerable: true, // default false
+    configurable: true
+  });
+  return person;
+}
+
+var createEmployee = function(firstName, lastName, position) {
+  var person = createPerson(firstName, lastName);
+  person.position = position;
+
+  var fullName = Object.getOwnPropertyDescriptor(person, "fullName");
+
+  var fullNameFunction = fullName.get.bind(person);
+
+  Object.defineProperty(person, "fullName",{
+    get: function(){
+      return fullNameFunction() +", "+ this.position;
+    }
+  });
+
+  var sayHelloFn = person.sayHello.bind(person);
+
+  person.sayHello = function() {
+    return sayHelloFn() + " My name is " + this.fullName
+  }
+
+
+  return person;
+}
+
+
+var emp1 = createEmployee("Muni", "Ayothi", "Senior Webdeveloper");
+
+console.log(emp1.fullName); //Muni Ayothi, Senior Webdeveloper
+
+emp1.firstName = "Sasi";
+
+console.log(emp1.fullName); //Sasi Ayothi, Senior Webdeveloper
+
+console.log(emp1.sayHello()); //Hi there.. My name is Sasi Ayothi, Senior Webdeveloper
+```
