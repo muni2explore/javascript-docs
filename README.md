@@ -214,3 +214,51 @@ var createPerson = function(firstName, lastName) {
 var muniAyothi = createPerson("muni", "ayothi");
 Object.keys(muniAyothi); //['firstName', 'lastName', 'fullName']
 </pre>
+
+# Parasitic Inheritance in JavaScript
+
+Directly accessing other object properties and combining with it's own properties.
+
+```javascript
+var createPerson = function(firstName, lastName) {
+  var person = {
+    firstName: firstName,
+    lastName: lastName
+  };
+  Object.defineProperty(person, "fullName", {
+    get: function() {
+      return this.firstName+" "+this.lastName;
+    },
+    enumerable: true, // default false
+    configurable: true
+  });
+  return person;
+}
+
+var createEmployee = function(firstName, lastName, position) {
+  var person = createPerson(firstName, lastName);
+  person.position = position;
+
+  var fullName = Object.getOwnPropertyDescriptor(person, "fullName");
+
+  var fullNameFunction = fullName.get.bind(person);
+
+  Object.defineProperty(person, "fullName",{
+    get: function(){
+      return fullNameFunction() +", "+ this.position;
+    }
+  });
+
+  return person;
+}
+
+
+var emp1 = createEmployee("Muni", "Ayothi", "Senior Webdeveloper");
+
+console.log(emp1.fullName); //Muni Ayothi, Senior Webdeveloper
+
+emp1.firstName = "Sasi";
+
+console.log(emp1.fullName); //Sasi Ayothi, Senior Webdeveloper
+
+```
