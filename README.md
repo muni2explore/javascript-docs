@@ -370,3 +370,9 @@ console.log(p1.firstName); //muni
 console.log(p1.fullName); //muni ayothi
 console.log(p1.sayHello()); //Hi there..
 ```
+# Live & Static Nodelist
+
+```javascript
+all = div.getElementByTagName('i'); //live nodelist
+document.querySelectorAll('i'); //Static nodelist
+```
