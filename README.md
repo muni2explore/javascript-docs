@@ -263,6 +263,7 @@ console.log(emp1.fullName); //Sasi Ayothi, Senior Webdeveloper
 
 ```
 #### Example -2
+
 ```javascript
 var createPerson = function(firstName, lastName) {
   var person = {
@@ -316,4 +317,56 @@ emp1.firstName = "Sasi";
 console.log(emp1.fullName); //Sasi Ayothi, Senior Webdeveloper
 
 console.log(emp1.sayHello()); //Hi there.. My name is Sasi Ayothi, Senior Webdeveloper
+```
+# Constructor Function and Prototype
+
+```javascript
+var Person = function(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+Person.prototype.sayHello =  function(){
+  return "Hi there..";
+}
+
+Object.defineProperty(Person.prototype, "fullName", {
+  get: function(){
+    return this.firstName+" "+this.lastName;
+  },
+  enumerable: true
+});
+
+
+var p1 = new Person("muni", "ayothi");
+console.log(p1.firstName); //muni
+console.log(p1.fullName); //muni ayothi
+```
+#### Example -2 
+```javascript
+var Person = function(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+
+Object.defineProperties(Person.prototype, {
+  sayHello:{
+    value: function() {
+      return "Hi there..";
+    }
+  },
+  fullName:{
+    get: function(){
+      return this.firstName+" "+this.lastName;
+    },
+    enumerable: true
+  }
+});
+
+
+var p1 = new Person("muni", "ayothi");
+console.log(p1.firstName); //muni
+console.log(p1.fullName); //muni ayothi
+console.log(p1.sayHello()); //Hi there..
 ```
