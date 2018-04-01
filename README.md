@@ -433,7 +433,47 @@ person.sayHi = function() {
 console.log( employee.sayHi() ); //hi there
 
 employee.sayHi = function() {
-  return "hi there. my name is "+this.fullName;
+  return this.__proto__.sayHi.call(this)+" my name is "+this.fullName;
+}
+console.log( employee.sayHi() ); //hi there. my name is Muni Ayothi
+console.log( person.sayHi() ); //hi there
+```
+#### Example - 3
+
+We can pass data descriptor when we creating new Object using Object.create() method.
+
+```javascript
+var person = {
+  firstName: 'Muni',
+  lastName: 'Ayothi'
+}
+
+
+Object.defineProperties(person, {
+  fullName:{
+    get: function(){
+      return this.firstName+" "+this.lastName;
+    },
+    enumerable: true
+  }
+});
+
+var employee = Object.create(person, {
+  sayHi:{
+    value: function() {
+      return this.__proto__.sayHi.call(this)+" my name is "+this.fullName;
+    },
+    enumerable: true,
+    writable: false
+  }
+});
+
+console.log( employee.fullName ); //Muni Ayothi
+
+console.log( employee.__proto__ === person ); //true;
+
+person.sayHi = function() {
+  return "hi there";
 }
 console.log( employee.sayHi() ); //hi there. my name is Muni Ayothi
 console.log( person.sayHi() ); //hi there
