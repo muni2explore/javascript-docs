@@ -478,3 +478,90 @@ person.sayHi = function() {
 console.log( employee.sayHi() ); //hi there. my name is Muni Ayothi
 console.log( person.sayHi() ); //hi there
 ```
+#### Example -4
+
+```javascript
+var Person = function(firstName, lastName){
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+
+Object.defineProperties(Person.prototype, {
+  fullName:{
+    get: function(){
+      return this.firstName+" "+this.lastName;
+    },
+    enumerable: true
+  },
+  sayHi: {
+    value: function() {
+      return "Hi there..";
+    }
+  }
+});
+
+var Employee = function(firstName, lastName, position){
+  Person.call(this, firstName, lastName);
+  this.position = position;
+}
+
+var emp1 = new Employee('Muni', 'Ayothi', 'Senior Webdeveloper');
+
+emp1.firstName; //Muni
+console.log(emp1.fullName); //undefined
+```
+Where Person.call(this, firstName, lastName); actually attaches firstName and lastName property to the Employee Object directly. But that is not linked Person prototype properties to the Employee Object.
+
+#### Example -5
+
+Here we have linked Person prototype properties to the Employee prototype properties by Object.create() method
+```javascript
+var Person = function(firstName, lastName){
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+
+Object.defineProperties(Person.prototype, {
+  fullName:{
+    get: function(){
+      return this.firstName+" "+this.lastName;
+    },
+    enumerable: true
+  },
+  sayHi: {
+    value: function() {
+      return "Hi there..";
+    }
+  }
+});
+
+var Employee = function(firstName, lastName, position){
+  Person.call(this, firstName, lastName);
+  this.position = position;
+}
+
+Employee.prototype = Object.create(Person.prototype, {
+  fullName:{
+    get: (function(){
+      var desc = Object.getOwnPropertyDescriptor(Person.prototype, "fullName").get;
+      return function(){
+        return desc.call(this)+", "+this.position;
+      }
+    })(),
+    enumerable: true
+  },
+  sayHi: {
+    value: function() {
+      return Person.prototype.sayHi.call(this)+" My Name is "+this.fullName;
+    }
+  }
+});
+
+var emp1 = new Employee('Muni', 'Ayothi', 'Senior Webdeveloper');
+
+console.log(emp1.firstName); //Muni
+console.log(emp1.fullName); //Muni Ayothi, Senior Webdeveloper
+console.log(emp1.sayHi()); //Hi there.. My Name is Muni Ayothi
+```
