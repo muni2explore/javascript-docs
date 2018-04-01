@@ -376,3 +376,65 @@ console.log(p1.sayHello()); //Hi there..
 all = div.getElementByTagName('i'); //live nodelist
 document.querySelectorAll('i'); //Static nodelist
 ```
+# Prototype Inheritance - JavaScript
+
+```javascript
+var person = {
+  firstName: 'Muni',
+  lastName: 'Ayothi'
+}
+
+
+Object.defineProperties(person, {
+  fullName:{
+    get: function(){
+      return this.firstName+" "+this.lastName;
+    },
+    enumerable: true
+  }
+});
+
+var employee = Object.create(person);
+
+console.log( employee.fullName ); //Muni Ayothi
+```
+When you create using Object.create() method, actually it's create new Object and assign that Object property in the newly created Object prototype.
+
+```javascript
+employee.__proto__ === person //true
+```
+#### Example - 2
+
+```javascript
+var person = {
+  firstName: 'Muni',
+  lastName: 'Ayothi'
+}
+
+
+Object.defineProperties(person, {
+  fullName:{
+    get: function(){
+      return this.firstName+" "+this.lastName;
+    },
+    enumerable: true
+  }
+});
+
+var employee = Object.create(person);
+
+console.log( employee.fullName ); //Muni Ayothi
+
+console.log( employee.__proto__ === person ); //true;
+
+person.sayHi = function() {
+  return "hi there";
+}
+console.log( employee.sayHi() ); //hi there
+
+employee.sayHi = function() {
+  return "hi there. my name is "+this.fullName;
+}
+console.log( employee.sayHi() ); //hi there. my name is Muni Ayothi
+console.log( person.sayHi() ); //hi there
+```
