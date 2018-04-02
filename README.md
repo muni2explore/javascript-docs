@@ -565,3 +565,9 @@ console.log(emp1.firstName); //Muni
 console.log(emp1.fullName); //Muni Ayothi, Senior Webdeveloper
 console.log(emp1.sayHi()); //Hi there.. My Name is Muni Ayothi
 ```
+Where 
+```javascript
+emp1.__proto__.__proto__.sayHi === Person.prototype.sayHi; //true
+emp1.__proto__.__proto__.__proto__.toString === Object.prototype.toString; //true
+emp1.__proto__.__proto__.__proto__.hasOwnProperty('toString'); //true
+```
