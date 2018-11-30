@@ -1,5 +1,7 @@
 # JavaScript Docs
 
+Check wiki pages for more info - https://github.com/muni2explore/javascript-docs/wiki
+
 # debounce, throttle & requestAnimationFrame
 
 ### debounce: 
