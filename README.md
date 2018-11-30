@@ -1,5 +1,17 @@
 # JavaScript Docs
 
+# debounce, throttle & requestAnimationFrame
+
+### debounce: 
+Grouping a sudden burst of events (like keystrokes) into a single one.
+![alt text](https://css-tricks.com/wp-content/uploads/2016/04/debounce-leading.png)
+
+### throttle: 
+Guaranteeing a constant flow of executions every X milliseconds. Like checking every 200ms your scroll position to trigger a CSS animation.
+
+### requestAnimationFrame: 
+a throttle alternative. When your function recalculates and renders elements on screen and you want to guarantee smooth changes or animations. Note: no IE9 support.
+
 # Object Literal
 
 ```javascript
