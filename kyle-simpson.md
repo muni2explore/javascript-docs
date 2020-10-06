@@ -158,6 +158,17 @@ foo("bar");
 
 ```js
 function foo(bar) {
+    if (bar) {
+        console.log(baz); //ReferenceError
+        let baz = bar;
+    }
+}
+
+foo("bar");
+```
+
+```js
+function foo(bar) {
     /*let*/  {
         let baz = bar;
         console.log(baz); // bar
