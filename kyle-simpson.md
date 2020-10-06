@@ -64,3 +64,17 @@ function foo() {
 }
 foo();
 ```
+
+### Cheating Lexical Scope (Compile time scope) - Eval
+
+```js
+var bar = "bar";
+
+function foo(str) {
+    eval(str);
+    console.log(bar); //42
+}
+
+foo("var bar = 42;");
+```
+
