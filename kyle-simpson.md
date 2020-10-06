@@ -101,6 +101,7 @@ obj.d; // Undefined
 d; // 3 -- oops
 ```
 ## IIFE
+```js
 /** IIFE **/
 
 var foo = "foo"
@@ -111,3 +112,4 @@ var foo = "foo"
 })()
 
 console.log(foo);
+```
