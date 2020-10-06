@@ -380,7 +380,25 @@ var o3 = { bar1: "bar3", foo: foo};
 var o4 = { bar: "bar4", foo: foo};
 
 foo(); // "bar1"
-02.foo(); // "bar2"
-03.foo(); // "undefined"
-04.foo(); // "bar4"
+o2.foo(); // "bar2"
+o3.foo(); // "undefined"
+o4.foo(); // "bar4"
+```
+
+```js
+var o1 = {
+    bar: "bar1",
+    foo: function() {
+        console.log(this.bar);
+    }
+}
+
+var o2 = {bar: "bar2", foo: o1.foo}
+
+var bar = "bar3";
+var foo = o1.foo;
+
+o1.foo();
+o2.foo();
+foo();
 ```
