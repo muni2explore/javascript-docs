@@ -185,5 +185,52 @@ b; // ???
 a = b;
 b = 2;
 b;  // 2
-```
 a;  // ???
+```
+
+```js
+var a = b();
+var c = d();
+a;
+c;
+
+function b() {
+    return c;
+}
+
+var d = function() {
+    return b();
+}
+
+/** Compile */
+function b() {
+    return c;
+}
+var a;
+var c;
+var d;
+a = b();
+c = d();
+a;
+c;
+d = function() {
+    return b();
+}
+```
+
+- functions are Hoisting first.
+```js
+// Hoisting
+foo(); // foo
+
+var foo = 2;
+
+function foo() {
+    console.log("bar");
+}
+
+
+function foo() {
+    console.log("foo");
+}
+```
