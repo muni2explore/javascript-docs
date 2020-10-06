@@ -375,10 +375,12 @@ function  foo() {
 }
 
 var bar = "bar1";
-var o2 = { bar: "basr2", foo: foo};
-var o3 = { bar: "basr3", foo: foo};
+var o2 = { bar: "bar2", foo: foo};
+var o3 = { bar1: "bar3", foo: foo};
+var o4 = { bar: "bar4", foo: foo};
 
 foo(); // "bar1"
 02.foo(); // "bar2"
-03.foo(); // "bar3"
+03.foo(); // "undefined"
+04.foo(); // "bar4"
 ```
