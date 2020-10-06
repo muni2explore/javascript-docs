@@ -79,3 +79,24 @@ function foo(str) {
 foo("var bar = 42;");
 ```
 
+## with
+
+```js
+var obj = {
+    a: 2,
+    b: 3,
+    c: 4
+}
+
+obj.a = obj.b + obj.c;
+obj.c = obj.b - obj.a;
+
+with (obj) {
+    a = b + c;
+    d = b - a;
+    d = 3;
+}
+
+obj.d; // Undefined
+d; // 3 -- oops
+```
