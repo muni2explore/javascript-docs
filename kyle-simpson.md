@@ -36,3 +36,18 @@ console.log(foo);
 console.log(bam);
 baz();
 ```
+
+```js
+var foo = function bar() {
+    var foo = 'baz';
+
+    function baz() {
+        foo = bar;
+        foo;
+    }
+    baz()
+}
+
+foo();
+bar();
+```
