@@ -66,6 +66,7 @@ foo();
 ```
 
 ### Cheating Lexical Scope (Compile time scope) - Eval
+It converts string content into excuteable script.
 
 ```js
 var bar = "bar";
