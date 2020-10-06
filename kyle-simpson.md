@@ -134,7 +134,23 @@ function foo() {
     for (let i=0; i <bar.length; i++) {
         console.log(bar.charAt(i));
     }
+    console.log(i); // ReferenceError
 }
 
 foo();
+```
+
+```js
+function foo(bar) {
+    if (bar) {
+        let baz = bar;
+        if (baz) {
+            let bam = baz;
+        }
+        console.log(bam); // Error
+    }
+    console.log(baz); // Error
+}
+
+foo("bar");
 ```
