@@ -427,3 +427,45 @@ var obj = {bar: "bar2"}
 foo();
 foo.call(obj);
 ```
+
+```js
+/**
+ * this: Hard binding
+ */
+function foo() {
+    console.log(this.bar);
+}
+var obj = {bar: "bar"}
+var obj2 = {bar: "bar2"}
+var orig = foo;
+foo = function() {
+    orig.call(obj);
+};
+
+foo();
+foo.call(obj2);
+```
+
+
+```js
+/**
+ * this: hard binding
+ */
+function bind(fn, o) {
+    return function() {
+        fn.call(o);
+    }
+}
+
+function foo() {
+    console.log(this.bar);
+}
+
+var obj = {bar: "bar"}
+var obj2 = {bar: "bar2"}
+
+foo = bind(foo, obj);
+
+foo();
+foo.call(obj2);
+```
