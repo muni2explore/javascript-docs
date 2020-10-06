@@ -100,3 +100,14 @@ with (obj) {
 obj.d; // Undefined
 d; // 3 -- oops
 ```
+## IIFE
+/** IIFE **/
+
+var foo = "foo"
+
+(function(){
+    var foo = "foo2"; 
+    console.log(foo); 
+})()
+
+console.log(foo);
