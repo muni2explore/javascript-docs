@@ -154,3 +154,15 @@ function foo(bar) {
 
 foo("bar");
 ```
+- will let keyword hoist?
+
+```js
+function foo(bar) {
+    let (baz = bar) {
+        console.log(baz); // bar
+    }  
+    console.log(baz); // Error
+}
+
+foo("bar");
+```
