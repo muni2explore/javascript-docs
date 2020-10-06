@@ -414,3 +414,16 @@ function baz() {
 var bar = "bar2";
 foo();
 ```
+
+```js
+/**
+ * Explicit binding
+ */
+function foo() {
+    console.log(this.bar);
+}
+var bar = "bar1";
+var obj = {bar: "bar2"}
+foo();
+foo.call(obj);
+```
