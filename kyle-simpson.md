@@ -167,3 +167,23 @@ function foo(bar) {
 
 foo("bar");
 ```
+
+## Hoisting
+```js
+a; // ???
+b;// ???
+var a = b;
+var b = 2;
+b; // ???
+a; // ???
+
+/** Compile */
+var a;
+var b;
+a; // ???
+b; // ???
+a = b;
+b = 2;
+b;  // 2
+```
+a;  // ???
