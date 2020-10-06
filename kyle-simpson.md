@@ -158,7 +158,8 @@ foo("bar");
 
 ```js
 function foo(bar) {
-    let (baz = bar) {
+    /*let*/  {
+        let baz = bar;
         console.log(baz); // bar
     }  
     console.log(baz); // Error
