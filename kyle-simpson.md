@@ -361,3 +361,24 @@ C = function() {
 	D();
 };
 ```
+
+Every function, while executing has a reference to its current execution context, called this.
+<br/>
+Execution context - how the function is called, when it is called.
+
+```js
+/**
+ * this : implicit & default binding
+ */
+function  foo() {
+    console.log(this.bar);
+}
+
+var bar = "bar1";
+var o2 = { bar: "basr2", foo: foo};
+var o3 = { bar: "basr3", foo: foo};
+
+foo(); // "bar1"
+02.foo(); // "bar2"
+03.foo(); // "bar3"
+```
