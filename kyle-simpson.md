@@ -36,6 +36,7 @@ console.log(foo);
 console.log(bam);
 baz();
 ```
+### Function Declaration vs Function Definition
 
 ```js
 var foo = function bar() {
