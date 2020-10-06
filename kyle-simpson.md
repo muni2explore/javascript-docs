@@ -494,3 +494,23 @@ foo = foo.bind2(obj);
 
 foo("baz");
 ```
+
+## this - new
+```js
+/*
+1. Brand new object created
+2. linked to new object
+3. object bound to this keyword
+4. Implicit return this
+*/
+
+/** this: new 
+ * we can convert any function into constructor function using new keyword
+*/
+function foo() {
+    this.baz = "baz";
+    console.log(this.bar +" "+ baz);
+}
+var bar = "bar";
+var baz = new foo();
+```
