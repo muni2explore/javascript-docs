@@ -520,3 +520,24 @@ var baz = new foo();
 2. Was the function called with `call` or `apply` specifying an explicit this?
 3. Was the function called via a containing/owning object (context)?
 4. DEFAULT: global object(except strict mode)
+
+
+## Closure
+
+> Closure is when function "remembers" its lexical scope even when the function is executed outside that lexical scope.
+
+
+function foo() {
+    var bar = "bar";
+
+    function baz () {
+        console.log(bar);
+    }
+    bam(baz);
+}
+
+function bam(baz) {
+    baz();
+}
+
+foo();
