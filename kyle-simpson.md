@@ -738,6 +738,7 @@ foo.bar();
 
 
 ```js
+/*
 # Instructions
 
 1. In this exercise, you will modify existing code for a simple note taking app. You will not add/remove functionality per se, but instead organize the code into a more proper module design and make it more flexible/reusable.
@@ -749,7 +750,7 @@ foo.bar();
 3. Make sure you have a "private" storage of the `notes` data list inside your module. Why is it a good idea to keep the data "private" inside the module?
 
 4. What do you notice about the structure of this code as it relates to the DOM access and the usage of jQuery? Would it make sense to "generalize" this code so that the module didn't have hardcoded into it the various DOM elements it would operate on? Explore how you would modify the code in this fashion. What are the benefits and tradeoffs?
-
+*/
 // assume this data came from the database
 var notes = [
 	"This is the first note I've taken!",
