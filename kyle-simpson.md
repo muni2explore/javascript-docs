@@ -514,3 +514,9 @@ function foo() {
 var bar = "bar";
 var baz = new foo();
 ```
+## this determination
+
+1. Was the function called with `new`?
+2. Was the function called with `call` or `apply` specifying an explicit this?
+3. Was the function called via a containing/owning object (context)?
+4. DEFAULT: global object(except strict mode)
