@@ -543,7 +543,7 @@ function bam(baz) {
 foo();
 ```
 
-```
+```js
 function foo() {
     var bar = "bar";
 
@@ -557,4 +557,121 @@ function bam(baz) {
 }
 
 bam();
+```
+
+```js
+function foo() {
+    var bar = "bar";
+
+    setTimeout(function() {
+        console.log(bar);
+    }, 1000);
+}
+
+foo();
+```
+
+```js
+function foo() {
+    var bar = "bar";
+
+    $("#btn").click(function(evt){
+        console.log(bar);
+    });
+}
+
+foo();
+```
+
+```js
+function foo() {
+    var bar = "bar";
+
+    setTimeout(function() {
+        console.log(bar++);
+    }, 100);
+
+    setTimeout(function() {
+        console.log(bar++);
+    }, 200);
+}
+
+foo();
+```
+
+```js
+function foo() {
+    var bar = "bar";
+
+    setTimeout(function() {
+        var baz = 1;
+        console.log(bar++);
+
+        setTimeout(function() {
+            console.log(bar+baz);
+        }, 200);
+    }, 100);   
+}
+
+foo();
+```
+
+```js
+for(var i=1; i <= 5; i++) {
+    setTimeout(() => {
+        console.log("i: "+i);
+    }, i*1000);
+}
+```
+
+```js
+for(var i=1; i <= 5; i++) {
+    (function(i){
+        setTimeout(() => {
+            console.log("i: "+i);
+        }, i*1000);
+    })(i);
+}
+```
+
+```js
+for(let i=1; i <= 5; i++) {
+    setTimeout(() => {
+        console.log("i: "+i);
+    }, i*1000);
+}
+```
+
+```js
+/**
+ * It's object reference
+ * Not an closure
+ */
+var foo = (function(){
+    var o = {bar: "bar"};
+    return {obj: o}
+})();
+
+console.log(foo.obj.bar);
+```
+
+```js
+/*
+Closure: classic module pattern
+
+1. There must be atleast one outer wrapping function call
+2. Atleast one inner function get returned of outer function call.
+
+where returned object function will have reference lexcial scope of outer wrapping function
+*/
+var foo = (function(){
+    var o = {bar: "bar"}
+    return {
+        bar: function() {
+            console.log(o.bar);
+        }
+    }
+})();
+
+foo.bar();
 ```
