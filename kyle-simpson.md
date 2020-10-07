@@ -867,3 +867,67 @@ $(document).ready(init);
 > Every single "Object" is built by a constructor function.
 > Each time a constructor is called, a new object is created.
 > A constructor makes an object *linked to* its own prototype.
+
+```js
+function Foo(who) {
+    this.me = who
+}
+
+Foo.prototype.identify = function() {
+    return "I am " + this.me;
+}
+
+var a1 = new Foo("a1");
+var a2 = new Foo("a2");
+
+a2.speak = function() {
+    alert("Hello, "+this.identify() + ".")
+}
+
+a1.__proto__ === Object.getPrototypeOf(a1);
+a2.constructor === Foo;
+a1.__proto__ == a2.__proto__;
+a2.__proto__ == a2.constructor.prototype
+```
+
+
+```js
+function Foo(who) {
+    this.me = who
+}
+
+Foo.prototype.identify = function() {
+    return "I am " + this.me;
+}
+
+var a1 = new Foo("a1");
+a1.identify();
+
+a1.identify = function() {
+    alert("Hello, "+
+        Foo.prototype.identify.call(this) + 
+    ".")
+};
+
+a1.identify();
+```
+
+```js
+function Foo(who) {
+    this.me = who
+}
+
+Foo.prototype.identify = function() {
+    return "I am " + this.me;
+}
+
+Foo.prototype.speak = function() {
+    alert("Hello, "+
+        this.identify() + 
+    ".")
+}
+
+
+var a1 = new Foo("a1");
+a1.speak();
+```
