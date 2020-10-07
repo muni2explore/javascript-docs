@@ -946,6 +946,13 @@ function Bar(who) {
 }
 
 //Bar.prototype = new Foo(); // OR
+/**
+ * Where Object.create() does two things
+ * 1. Create brand new Object
+ * 2. Links the Object with other Object
+ * 
+ * It's omits the returning this refernce
+ */
 Bar.prototype = Object.create(Foo.prototype);
 // Note: .constructor is borked here, need to fix
 
