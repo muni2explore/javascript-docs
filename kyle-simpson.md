@@ -853,3 +853,17 @@ function init() {
 $(document).ready(init);
 
 ```
+
+
+
+
+## Object Orienting
+
+- Common OO Patterns
+- Prototype
+- "Inheritance" vs "Behavior Delegation"
+
+
+> Every single "Object" is built by a constructor function.
+> Each time a constructor is called, a new object is created.
+> A constructor makes an object *linked to* its own prototype.
