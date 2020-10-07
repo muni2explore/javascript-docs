@@ -969,3 +969,6 @@ var b2 = new Bar("b2");
 b1.speak();
 b2.speak();
 ```
+
+![GitHub Logo](https://1.bp.blogspot.com/-FQe9WFVblQY/X30w5z3SJFI/AAAAAAAAMfo/hhQj2DbaXK8YpvEDhzV0KILQdIKopZgzgCNcBGAsYHQ/s2048/Screen%2BShot%2B2020-10-07%2Bat%2B8.32.44%2BAM.png)
+![Object Linkage](https://1.bp.blogspot.com/-sGpukcNlmaU/X30xol-UzAI/AAAAAAAAMfw/AyTicSiG5n8n0X6516uuZg5zUD535MdTwCNcBGAsYHQ/s2048/Screen%2BShot%2B2020-10-07%2Bat%2B8.39.27%2BAM.png)
