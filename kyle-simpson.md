@@ -526,7 +526,7 @@ var baz = new foo();
 
 > Closure is when function "remembers" its lexical scope even when the function is executed outside that lexical scope.
 
-
+```js
 function foo() {
     var bar = "bar";
 
@@ -541,3 +541,20 @@ function bam(baz) {
 }
 
 foo();
+```
+
+```
+function foo() {
+    var bar = "bar";
+
+    return function() {
+        console.log(bar);
+    };
+}
+
+function bam(baz) {
+    foo()();
+}
+
+bam();
+```
