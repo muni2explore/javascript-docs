@@ -660,7 +660,7 @@ console.log(foo.obj.bar);
 Closure: classic module pattern
 
 1. There must be atleast one outer wrapping function call
-2. Atleast one inner function get returned of outer function call.
+2. The outer function call must return an object with one inner function.
 
 where returned object function will have reference lexcial scope of outer wrapping function
 */
@@ -673,5 +673,59 @@ var foo = (function(){
     }
 })();
 
+foo.bar();
+```
+
+```js
+var foo = (function(){
+    var publicAPI = {
+        bar: function() {
+            publicAPI.baz()
+        },
+        baz: function() {
+            console.log('baz');
+        }
+    };
+    return publicAPI;
+})();
+
+foo.bar();
+```
+
+```js
+/*
+Closure: modern module pattern
+*/
+define("foo", function(){
+    var o = {bar: "bar"};
+
+    return {
+        bar: function() {
+            console.log(o.bar);
+        }
+    }
+})
+```
+
+```js
+/*
+Closure: future /ES6+ module pattern
+
+foo.js
+*/
+
+var o = {bar: "bar"};
+
+export function bar() {
+    console.log(o.bar);
+}
+
+
+//bar.js
+
+import {bar} from "foo";
+bar(); 
+
+import "foo"
 foo.bar();
 ```
